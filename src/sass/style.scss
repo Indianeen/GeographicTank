@@ -1,0 +1,45 @@
+*{
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    font-size: 10px;
+    width: 100%;
+    min-height: 100vh;
+    background-color:rgb(206, 202, 206);
+}
+
+[class^="box-"] {
+    background-color: rgb(182, 167, 216);
+  
+  /* To place the letter at the center */
+    display: grid;
+    place-items: center;
+  }
+
+  .container {
+    display: grid;
+    gap: 20px;
+    height: 50%;
+    background-color: lemonchiffon;
+
+    grid-template-areas: 
+    "A A A A   B B B B"
+    "C C C C   D D D D"
+    "E E E E   F F F F"
+    "G G G G   H H H H"
+    "I I I I   J J J J";
+    //grid-template-rows: 1fr 1fr;
+    //grid-template-columns: 1fr 1fr;
+}
+
+.box-1{
+    grid-area: A;
+    place-content : center / stretch ;
+    place-items : start / center ;       
+    row-gap : 20px ; 
+    column-gap : 30px ;    
+}
