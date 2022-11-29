@@ -1,4 +1,4 @@
-const Image = require("@11ty/eleventy-img");
+import Image, { generateHTML } from "@11ty/eleventy-img";
 
 async function imageShortcode(src, alt, sizes) {
     let metadata = await Image(src, {
@@ -15,10 +15,10 @@ async function imageShortcode(src, alt, sizes) {
     };
 
     // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
-    return Image.generateHTML(metadata, imageAttributes);
+    return generateHTML(metadata, imageAttributes);
 }
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
     eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
     return {
         dir: {
