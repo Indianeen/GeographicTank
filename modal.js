@@ -1,12 +1,10 @@
-import { F } from "chart.js/dist/chunks/helpers.core";
-
 var rusmodal = document.getElementById("russiaModal");
 var rusbtn = document.getElementById("Russia");
-var russpan = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close")[0];
 rusbtn.onclick = function() {
     rusmodal.style.display = "block";
 }
-russpan.onclick = function() {
+span.onclick = function() {
     rusmodal.style.display = "none";
 }
 window.onclick = function(event) {
