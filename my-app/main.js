@@ -1,27 +1,32 @@
-import './style.css';
-import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
+import TileLayer from 'ol/layer/Tile';
+import {Map, View} from 'ol';
+import {fromLonLat} from 'ol/proj';
 import GeoJSON from 'ol/format/GeoJSON';
-import Map from 'ol/Map';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import View from 'ol/View';
+import Link from 'ol/interaction/Link';
+
+
+
+const source = new VectorSource();
 
 const map = new Map({
-  target: 'map',
-  layers: [
-    new TileLayer({
-      source: new OSM()
-    }),
-    new VectorLayer({
-      source: new VectorSource({
-        format: new GeoJSON(),
-        url: './data/countries.json',
-      })
-    })
-  ],
+  target: 'map-container',
   view: new View({
-    center: [0, 0],
-    zoom: 2
-  })
+    center: fromLonLat([0, 0]),
+    zoom: 2,
+  }),
 });
+map,addInteraction(new Link())
+
+const layer = new VectorLayer({
+  source: source,
+});
+map.addLayer(layer);
+map.addInteraction(
+  new DragAndDrop({
+    source: source,
+    formatConstructors: [GeoJSON],
+  })
+);
