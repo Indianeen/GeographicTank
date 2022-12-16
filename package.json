@@ -21,5 +21,21 @@
     "run": "^1.4.0",
     "sass": "^1.56.2",
     "start": "^5.1.0"
-  }
+  },  
+  "name": "geographictank",
+  "version": "1.0.0",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:sass": "sass  --no-source-map --watch src/sass:dist/css",
+    "watch:eleventy": "eleventy --serve",
+    "build:sass": "sass  --no-source-map src/sass:dist/css",
+    "build:eleventy": "eleventy",
+    "start": "npm-run-all build:sass --parallel watch:*",
+    "build": "npm-run-all build:sass build:eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
